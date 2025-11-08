@@ -12,124 +12,120 @@
 :root{
   --c1:#4FC3F7; --c2:#1976D2; --c3:#0D47A1; --text:#0f172a;
   --c1a: rgba(79,195,247,.38); --c2a: rgba(25,118,210,.36); --c3a: rgba(13,71,161,.34);
-  --white:#ffffff;
-  --glass: rgba(255,255,255,.12);
 }
 *{box-sizing:border-box}
 html,body{
   margin:0;padding:0;color:var(--text);font-family:'Lato',sans-serif;
-  background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3));background-attachment:fixed
+  background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3));background-attachment:fixed;
+  -webkit-text-size-adjust:100%;
 }
+button,input{font:inherit;-webkit-appearance:none;appearance:none}
+img{max-width:100%;height:auto;display:block}
+
+/* Layout */
 .container{width:min(1100px,92vw);margin:0 auto}
-.section{padding:clamp(24px,5vw,48px) 0;color:#fff;text-align:center;border-bottom:1px solid rgba(255,255,255,.15)}
+.section{padding:clamp(20px,6vw,56px) 0;color:#fff;text-align:center;border-bottom:1px solid rgba(255,255,255,.15)}
 h1,h2{font-family:'Marcellus',serif;margin:0 0 .6rem;color:#fff}
-h1{font-size:clamp(28px,5vw,48px)} h2{font-size:clamp(22px,4vw,32px)}
-p.lead{font-size:clamp(16px,2vw,18px);line-height:1.7;color:#e2e8f0;margin:0 auto;max-width:980px}
+h1{font-size:clamp(26px,6vw,48px)} h2{font-size:clamp(20px,5vw,32px)}
+p.lead{font-size:clamp(15px,4vw,18px);line-height:1.7;color:#e2e8f0;margin:0 auto;max-width:980px}
 .lato-bold{font-weight:900}
 
 /* LOGO */
-.hero-logo{min-height:clamp(160px,28vh,300px);display:flex;align-items:center;justify-content:center}
-.hero-logo .container{display:flex;justify-content:center}
-.logo-hero{height:120px;width:auto;display:block;margin:0 auto;transition:.35s}
+.hero-logo{min-height:clamp(120px,24vh,280px);display:flex;align-items:center;justify-content:center}
+.logo-hero{height:clamp(64px,16vw,120px);width:auto;margin:0 auto;transition:.35s}
 .logo-hero:hover{transform:scale(1.06)}
 
 /* Cards */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-.card{border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:18px;background:rgba(255,255,255,.1);backdrop-filter:blur(4px);transition:.2s;cursor:pointer}
-.card:hover{transform:scale(1.03);box-shadow:0 12px 28px rgba(13,71,161,.35)}
-.card h3{margin:0 0 .4rem;color:#fff;font-family:'Marcellus',serif;font-size:1.12rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.card{border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:16px;background:rgba(255,255,255,.1);backdrop-filter:blur(4px);transition:.2s;cursor:pointer}
+.card:focus{outline:2px solid rgba(255,255,255,.6);outline-offset:2px}
+.card:hover{transform:scale(1.02);box-shadow:0 12px 28px rgba(13,71,161,.35)}
+.card h3{margin:0 0 .4rem;color:#fff;font-family:'Marcellus',serif;font-size:1.05rem}
 .card p{margin:0;color:#dbeafe}
 
 /* Imagen */
-.figure{position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3);margin:32px 0}
-.figure img{width:100%;height:auto;display:block;transition:.6s}
-.figure:hover img{transform:scale(1.035)}
+.figure{position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3);margin:24px 0}
+.figure img{transition:.6s}
+.figure:hover img{transform:scale(1.02)}
 
 /* FEATURES */
-.features{margin:10px auto 0;max-width:1100px}
-.features .intro{font-family:'Marcellus',serif;text-align:center;font-size:clamp(18px,2.6vw,26px);color:#fff;margin:0 0 14px}
+.features{margin:8px auto 0;max-width:1100px}
+.features .intro{font-family:'Marcellus',serif;text-align:center;font-size:clamp(16px,4.2vw,24px);color:#fff;margin:0 0 12px}
 
-/* Barra animada con zoom y destello */
+/* Barra animada */
 .features-rail{
   position:relative;border:1px solid rgba(255,255,255,.28);
   background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.10));
-  border-radius:16px;padding:12px;overflow:hidden;will-change:transform,box-shadow;
+  border-radius:16px;padding:10px;overflow:auto;will-change:transform,box-shadow;
   transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.features-rail::before{
-  content:""; position:absolute; inset:-20%; 
-  background:linear-gradient(110deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
-  transform:translateX(-120%); filter:blur(12px); opacity:.0; pointer-events:none;
-}
-.features-rail:hover{
-  transform:scale(1.02);
-  box-shadow:0 22px 46px rgba(13,71,161,.35);
-  border-color:rgba(255,255,255,.45);
-}
-.features-rail:hover::before{
-  animation:shinebar 1.2s ease forwards;
-  opacity:.6;
-}
-@keyframes shinebar{to{transform:translateX(120%)}}
-
+.features-rail::-webkit-scrollbar{height:8px}
+.features-rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:8px}
+.features-rail:hover{transform:scale(1.01);box-shadow:0 22px 46px rgba(13,71,161,.35);border-color:rgba(255,255,255,.45)}
 .feature-list{
-  list-style:none;margin:0;padding:0;
-  display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:10px; align-items:stretch;
+  list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);gap:10px;align-items:stretch;
 }
 .feature-list li{
   display:flex;align-items:center;gap:10px;
-  padding:clamp(10px,2.2vw,16px) clamp(12px,3vw,18px);
+  padding:clamp(10px,3.5vw,16px) clamp(12px,4.5vw,18px);
   border-radius:12px;font-weight:900;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
-  font-size:clamp(12px,1.6vw,16px);min-width:0;
+  font-size:clamp(12px,3.5vw,16px);min-width:0;
 }
 .feature-list svg{flex:0 0 18px}
 
 /* Video */
-.video-wrap{width:min(980px,100%);margin:12px auto 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);background:#000}
-.video-wrap video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;border:0}
+.video-wrap{width:min(980px,100%);margin:10px auto 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);background:#000}
+.video-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;border:0}
 
-/* Título Video centrado */
-.video-heading{
-  width:min(980px,100%);margin:22px auto 6px;text-align:center;
-}
-.video-heading .kicker{
-  display:block;letter-spacing:.08em;font-weight:800;opacity:.95;
-  font-size:clamp(12px,1.6vw,14px);
-}
-.video-heading .title{
-  display:block;font-family:'Marcellus',serif;line-height:1.02;
-  font-size:clamp(28px,6vw,56px);
-  background:linear-gradient(90deg,#fff,#dbeafe);-webkit-background-clip:text;background-clip:text;color:transparent;
-}
+/* Título Video */
+.video-heading{width:min(980px,100%);margin:18px auto 6px;text-align:center;}
+.video-heading .kicker{display:block;letter-spacing:.08em;font-weight:800;opacity:.95;font-size:clamp(12px,3.6vw,14px)}
+.video-heading .title{display:block;font-family:'Marcellus',serif;line-height:1.02;font-size:clamp(24px,9vw,56px);
+  background:linear-gradient(90deg,#fff,#dbeafe);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* Aparición */
 .reveal{opacity:0;filter:blur(6px);transform:translateY(10px);transition:.8s}
 .reveal.visible{opacity:1;filter:blur(0);transform:none}
 
 /* Noticias */
-.news-grid{display:flex;gap:16px;flex-wrap:nowrap;overflow:auto;padding-bottom:6px}
-.news-card{min-width:300px;max-width:300px;background:rgba(255,255,255,.12);border-radius:14px;border:1px solid rgba(255,255,255,.25);overflow:hidden;text-align:left}
-.news-card img{display:block;width:100%;height:160px;object-fit:cover}
-.news-card .inner{padding:12px 14px 14px}
+.news-grid{display:flex;gap:14px;flex-wrap:nowrap;overflow:auto;padding-bottom:6px}
+.news-card{min-width:260px;max-width:260px;background:rgba(255,255,255,.12);border-radius:14px;border:1px solid rgba(255,255,255,.25);overflow:hidden;text-align:left}
+.news-card img{width:100%;height:150px;object-fit:cover}
+.news-card .inner{padding:10px 12px 12px}
 .news-card a{color:#fff;text-decoration:none;font-weight:900;line-height:1.2;display:block;margin-bottom:4px}
 .news-card .src{color:#cbd5e1;font-size:.85rem}
 
-/* MAPA */
-.map-wrap{position:relative;margin:16px auto 0;border-radius:16px;overflow:hidden;
+/* ===== MAPA ===== */
+.map-wrap{
+  position:relative;margin:12px auto 0;border-radius:16px;overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);max-width:1200px;
-  background:radial-gradient(1200px 800px at 70% 20%, rgba(255,255,255,.35), transparent 60%),linear-gradient(180deg, var(--c1a), var(--c2a), var(--c3a))}
-.map-toolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-.map-toolbar button,.map-toolbar label{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer}
+  background:radial-gradient(1200px 800px at 70% 20%, rgba(255,255,255,.35), transparent 60%),
+             linear-gradient(180deg, var(--c1a), var(--c2a), var(--c3a));
+  -webkit-user-select:none; user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+#mapSvg{
+  display:block;width:100%;height:auto;touch-action:none; /* controlamos nosotros el gesto */
+  background:transparent;
+}
+
+/* Toolbar (sólo admin) */
+.map-toolbar{display:none;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.map-toolbar button,.map-toolbar label{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;
+  padding:12px 16px;border-radius:12px;cursor:pointer;font-size:clamp(14px,3.6vw,16px)
+}
 .map-toolbar input[type="file"]{display:none}
 .map-note{font-size:.9rem;color:#dbeafe;margin-top:6px}
 
-/* Lotes */
+/* Lotes (estados) */
 .lot{fill:transparent !important; stroke:none !important; cursor:pointer; transition:fill .12s}
-.lot.sold{fill:rgba(220,38,38,.55) !important}
-.lot.editing{fill:rgba(220,38,38,.25) !important}
-.lot.selected{filter:drop-shadow(0 0 6px rgba(239,68,68,.85))}
+.lot.sold{fill:rgba(220,38,38,.55) !important}        /* Rojo: VENDIDO */
+.lot.available{fill:rgba(34,197,94,.45) !important}   /* Verde: DISPONIBLE */
+.lot.editing{fill:rgba(255,255,255,.18) !important}
+.lot.selected{filter:drop-shadow(0 0 6px rgba(255,255,255,.85))}
 
-/* Mini-menú (ya responsivo) */
+/* Mini-menú */
 .lot-menu{
   position:absolute;z-index:5;background:#0b1220;color:#fff;border:1px solid rgba(255,255,255,.2);
   border-radius:12px;padding:10px;display:none;gap:8px;align-items:center;
@@ -138,19 +134,36 @@ p.lead{font-size:clamp(16px,2vw,18px);line-height:1.7;color:#e2e8f0;margin:0 aut
 .lot-menu .idlabel{font-size:.85rem;opacity:.85;margin-right:6px}
 .lot-menu input{
   background:#0e172a;color:#fff;border:1px solid rgba(255,255,255,.25);
-  border-radius:8px;padding:8px 10px;min-width:160px;flex:1;
+  border-radius:8px;padding:10px 12px;min-width:160px;flex:1;font-size:16px
 }
 .lot-menu button{
   background:#172036;color:#fff;border:1px solid rgba(255,255,255,.2);
-  padding:8px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;
+  padding:10px 12px;border-radius:8px;cursor:pointer;white-space:nowrap;font-size:15px
 }
 
-/* CTA botón mejorado */
+/* Leyenda DENTRO del mapa: esquina superior izquierda (no bloquea drag) */
+.legend-inmap{
+  position:absolute;
+  left:10px;
+  top:10px;
+  right:auto;
+  transform:none;
+  display:flex; flex-direction:column; gap:10px; align-items:flex-start;
+  padding:10px 12px; background:rgba(11,18,32,.7); border:1px solid rgba(255,255,255,.25);
+  border-radius:12px; z-index:4; color:#e2e8f0; font-size:14px; backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+.legend-inmap .item{display:flex; align-items:center; gap:8px; white-space:nowrap}
+.legend-inmap .sw{width:14px; height:14px; border-radius:4px; border:1px solid rgba(255,255,255,.35)}
+.legend-inmap .sw.sold{background:#dc2626}
+.legend-inmap .sw.available{background:#22c55e}
+
+/* CTA botón */
 .btn-wrap{display:flex;justify-content:center;margin-top:14px}
 .btn-whats{
   appearance:none;border:0;cursor:pointer;
   padding:18px 38px;border-radius:18px;font-weight:900;
-  font-size:clamp(16px,2.2vw,22px);letter-spacing:.6px;color:#fff;
+  font-size:clamp(16px,5.2vw,22px);letter-spacing:.6px;color:#fff;
   background:linear-gradient(135deg,#26d07c,#0ea5e9,#0D47A1);
   background-size:200% 200%;
   box-shadow:0 16px 36px rgba(14,165,233,.35), 0 0 0 2px rgba(255,255,255,.1) inset;
@@ -158,22 +171,19 @@ p.lead{font-size:clamp(16px,2vw,18px);line-height:1.7;color:#e2e8f0;margin:0 aut
   position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:10px;
   animation:gradMove 6s ease infinite;
 }
-.btn-whats:before{
-  content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,0),rgba(255,255,255,.35));
-  transform:translateX(-100%); filter:blur(10px);
-}
+.btn-whats:before{content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,0),rgba(255,255,255,.35));transform:translateX(-100%); filter:blur(10px)}
 .btn-whats:hover{transform:translateY(-1px) scale(1.02); box-shadow:0 20px 44px rgba(14,165,233,.45)}
 .btn-whats:hover:before{animation:shine 1.2s ease}
 .btn-whats .ico{display:inline-block; width:22px; height:22px}
 @keyframes shine{to{transform:translateX(100%)}}
 @keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-/* Comparativo colaborativo */
+/* Comparativo */
 .compare{width:100%; max-width:1000px; margin:0 auto; text-align:left;}
-.compare .caption{font-family:'Marcellus',serif; font-size:clamp(20px,3.6vw,30px); margin-bottom:12px; color:#fff;}
+.compare .caption{font-family:'Marcellus',serif; font-size:clamp(18px,6vw,28px); margin-bottom:12px; color:#fff;}
 .table{width:100%; border-collapse:separate; border-spacing:0; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.25); border-radius:14px; overflow:hidden;}
-.table thead th{background:rgba(255,255,255,.2); color:#fff; padding:14px 16px; font-family:'Marcellus',serif; font-size:clamp(14px,2vw,18px);}
-.table tbody td{padding:14px 16px; color:#f1f5f9; vertical-align:top; border-top:1px solid rgba(255,255,255,.18);}
+.table thead th{background:rgba(255,255,255,.2); color:#fff; padding:14px 16px; font-family:'Marcellus',serif; font-size:clamp(13px,3.8vw,18px);}
+.table tbody td{padding:12px 14px; color:#f1f5f9; vertical-align:top; border-top:1px solid rgba(255,255,255,.18); font-size:clamp(13px,3.6vw,16px)}
 .table tbody tr:hover td{ background:rgba(255,255,255,.06) }
 .table .soft{ color:#cbd5e1 }
 .table .point{ display:flex; gap:10px; align-items:flex-start }
@@ -184,8 +194,10 @@ p.lead{font-size:clamp(16px,2vw,18px);line-height:1.7;color:#e2e8f0;margin:0 aut
 .toast.show{opacity:1;transform:translateX(-50%) translateY(-6px)}
 
 footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(255,255,255,.25)}
+
+/* Responsive */
 @media(max-width:900px){
-  .feature-list{grid-auto-columns:minmax(180px,1fr)}
+  .stats{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -194,7 +206,7 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
 <!-- LOGO -->
 <section class="section hero-logo reveal">
   <div class="container">
-    <img class="logo-hero" src="Grand Mayahual logo.png" alt="Grand Mayahual logo">
+    <img class="logo-hero" src="Grand Mayahual logo.png" alt="Grand Mayahual logo" loading="lazy">
   </div>
 </section>
 
@@ -208,9 +220,9 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
     </p>
 
     <div class="stats" id="stats">
-      <div class="card" role="button" tabindex="0"><h3>Lotes unifamiliares</h3><p>Desde 180 m²</p></div>
-      <div class="card" role="button" tabindex="0"><h3>Lotes mixtos</h3><p>Desde 250 m² hasta 900 m²</p></div>
-      <div class="card" role="button" tabindex="0"><h3>Lotes multifamiliares</h3><p>Desde 900 m²</p></div>
+      <button class="card" role="button"><h3>Lotes unifamiliares</h3><p>Desde 180 m²</p></button>
+      <button class="card" role="button"><h3>Lotes mixtos</h3><p>Desde 250 m² hasta 900 m²</p></button>
+      <button class="card" role="button"><h3>Lotes multifamiliares</h3><p>Desde 900 m²</p></button>
     </div>
   </div>
 </section>
@@ -218,7 +230,7 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
 <!-- RENDER + FEATURES + VIDEO -->
 <section class="section reveal">
   <div class="container">
-    <figure class="figure"><img src="render de la entrada.jpg" alt="render de la entrada"></figure>
+    <figure class="figure"><img src="render de la entrada.jpg" alt="render de la entrada" loading="lazy"></figure>
 
     <div class="features">
       <p class="intro">Aquí, cada metro cuadrado se planificó para que la <strong>comodidad</strong>, la <strong>estética</strong> y el valor convergieran.</p>
@@ -232,7 +244,6 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
       </div>
     </div>
 
-    <!-- Título Video (centrado, sin duplicados) -->
     <div class="video-heading">
       <span class="kicker">CONOCE NUESTRO</span>
       <span class="title">AVANCE DE OBRA</span>
@@ -250,20 +261,17 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
 <section class="section reveal" id="noticias" style="background:rgba(255,255,255,.08);backdrop-filter:blur(4px)">
   <div class="container">
     <h2>Mahahual en titulares</h2>
-    <div class="news-grid" id="newsGrid"></div>
+    <div class="news-grid" id="newsGrid" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- COMPARATIVO COLABORATIVO -->
+<!-- COMPARATIVO -->
 <section class="section reveal" id="comparativo">
   <div class="container compare">
     <div class="caption">Cómo se complementan el <strong>destino Mahahual</strong> y <strong>Grand Mayahual</strong></div>
     <table class="table" aria-label="Comparativo colaborativo">
       <thead>
-        <tr>
-          <th>Grand Mayahual</th>
-          <th>Mahahual (destino)</th>
-        </tr>
+        <tr><th>Grand Mayahual</th><th>Mahahual (destino)</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -301,27 +309,36 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
   </div>
 </section>
 
-<!-- MAPA INTERACTIVO (se mantiene igual con persistencia por URL) -->
+<!-- MAPA INTERACTIVO -->
 <section class="section reveal" id="mapa">
   <div class="container">
     <h2>Mapa de Lotes</h2>
 
     <div class="map-wrap" id="mapWrap">
-      <div class="lot-menu" id="lotMenu">
+      <div class="lot-menu" id="lotMenu" role="dialog" aria-modal="true" aria-label="Editar lote">
         <span class="idlabel">ID / Estado:</span>
         <input type="text" id="lotIdInput" placeholder="Ej: MZ 08 LT 42 · escribe 'vendido' o 'disponible' y Enter" />
         <button id="btnDisponible">Disponible</button>
         <button id="btnVendido">Vendido</button>
+        <button id="btnDuplicar">Duplicar</button>
+        <button id="btnEliminar">Eliminar</button>
         <button id="btnCancelar">Cancelar</button>
       </div>
 
-      <svg id="mapSvg" viewBox="0 0 1920 1080" width="100%" style="display:block">
-        <image id="mapImg" href="AP.png" x="0" y="0" width="1920" height="1080" preserveAspectRatio="none"></image>
+      <svg id="mapSvg" viewBox="0 0 1920 1080" width="100%" aria-label="Mapa de lots" role="img">
+        <image id="mapImg" href="AP.png" x="0" y="0" width="1920" height="1080" preserveAspectRatio="none" alt="Mapa base"></image>
         <g id="lotsLayer"></g>
       </svg>
+
+      <!-- LEYENDA DENTRO DEL MAPA (ESQUINA SUPERIOR IZQUIERDA) -->
+      <div class="legend-inmap" id="legendInMap" aria-label="Simbología del mapa">
+        <div class="item"><span class="sw sold" aria-hidden="true"></span> Rojo: Vendido</div>
+        <div class="item"><span class="sw available" aria-hidden="true"></span> Verde: Disponible</div>
+      </div>
     </div>
 
-    <div class="map-toolbar">
+    <!-- Toolbar solo visible para admin -->
+    <div class="map-toolbar" id="mapToolbar" aria-hidden="true">
       <button id="toggleEdit">Editar mapa</button>
       <button id="clearAll">Limpiar todo</button>
       <button id="exportJson">Exportar JSON</button>
@@ -332,8 +349,18 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
       <button id="zoomReset">Reset</button>
       <button id="saveLink">Guardar enlace</button>
       <button id="copyLink">Copiar enlace</button>
+      <button id="logoutAdmin" style="background:#b91c1c">Salir admin</button>
     </div>
-    <div class="map-note">Cada cambio se guarda en el <strong>enlace</strong> (URL con #gm=...). Úsalo para recargar/compartir y ver el mismo estado.</div>
+
+    <!-- Acceso admin para visitantes -->
+    <div class="btn-wrap" id="adminAccessWrap">
+      <button class="btn-whats" id="btnAdminAccess" type="button" aria-controls="mapToolbar">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.67 0-8 2.34-8 5.5V22h16v-2.5C20 16.34 16.67 14 12 14Z"/></svg>
+        Acceso admin
+      </button>
+    </div>
+
+    <div class="map-note" id="mapNote">Vista pública sin edición. Solo admin puede modificar el mapa.</div>
   </div>
 </section>
 
@@ -344,8 +371,8 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
       <span class="lato-bold">MEXO COMPANY</span> DESARROLLADOR OFICIAL DE <span class="lato-bold">GRAND MAYAHUAL</span>
     </h2>
     <div class="btn-wrap" style="margin-top:12px;">
-      <button class="btn-whats" id="btnInvestNow">
-        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5.02.2 5.3.22 11.86c.01 2.08.57 4.11 1.62 5.9L0 24l6.4-1.76a11.86 11.86 0 0 0 5.65 1.44h.05c6.55 0 11.86-5.29 11.88-11.84A11.82 11.82 0 0 0 20.52 3.48Zm-8.47 18.3h-.04a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.8 1.04 1.02-3.7-.24-.38A9.9 9.9 0 0 1 2.1 11.9C2.09 6.6 6.39 2.3 11.69 2.3c2.63 0 5.09 1.02 6.95 2.88a9.81 9.81 0 0 1 2.87 6.98c-.02 5.3-4.34 9.62-9.46 9.62Zm5.47-7.2c-.3-.15-1.76-.87-2.03-.96-.27-.09-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.77-1.47-1.72-1.64-2.02-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.06 1.04-1.06 2.53s1.08 2.94 1.23 3.14c.15.2 2.12 3.25 5.14 4.55.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.08-.11-.27-.18-.57-.33Z"/></svg>
+      <button class="btn-whats" id="btnInvestNow" type="button">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5.02.2 5.3.22 11.86c.01 2.08.57 4.11 1.62 5.9L0 24l6.4-1.76a11.86 11.86 0 0 0 5.65 1.44h.05c6.55 0 11.86-5.29 11.88-11.84A11.82 11.82 0 0 0 20.52 3.48Zm-8.47 18.3h-.04a9.9 9.9 0  0 1-5.04-1.38l-.36-.21-3.8 1.04 1.02-3.7-.24-.38A9.9 9.9 0 0 1 2.1 11.9C2.09 6.6 6.39 2.3 11.69 2.3c2.63 0 5.09 1.02 6.95 2.88a9.81 9.81 0  0 1 2.87 6.98c-.02 5.3-4.34 9.62-9.46 9.62Zm5.47-7.2c-.3-.15-1.76-.87-2.03-.96-.27-.09-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.77-1.47-1.72-1.64-2.02-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.06 1.04-1.06 2.53s1.08 2.94 1.23 3.14c.15.2 2.12 3.25 5.14 4.55.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.08-.11-.27-.18-.57-.33Z"/></svg>
         EL MOMENTO DE INVERTIR ES AHORA
       </button>
     </div>
@@ -353,7 +380,7 @@ footer{padding:28px 0;color:#cbd5e1;text-align:center;border-top:1px solid rgba(
 </section>
 
 <footer class="reveal">© Mexo Company</footer>
-<div class="toast" id="toast">Guardado en el enlace</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Guardado en el enlace</div>
 
 <script>
 /* ===== Helpers UI ===== */
@@ -368,23 +395,22 @@ const WHATS_URL='https://wa.me/529981958858';
 document.getElementById('btnInvestNow').onclick=()=>location.href=WHATS_URL;
 document.querySelectorAll('#stats .card').forEach(c=>{
   c.addEventListener('click',()=>location.href=WHATS_URL);
-  c.addEventListener('keypress',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();location.href=WHATS_URL;}})
 });
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 (function(){
   const v=document.getElementById('videoAvance'); if(!v) return;
   const makePoster=()=>{try{const w=v.videoWidth||1280,h=v.videoHeight||720;if(!w||!h)return;const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(v,0,0,w,h);v.setAttribute('poster',c.toDataURL('image/jpeg',.82));v.pause();v.currentTime=0;}catch(_){}}; 
-  v.addEventListener('loadedmetadata',()=>{try{v.currentTime=Math.min(.2,(v.duration||1)/10)}catch(_){}})
-  v.addEventListener('seeked',makePoster,{once:true});
+  v.addEventListener('loadedmetadata',()=>{try{v.currentTime=Math.min(.2,(v.duration||1)/10)}catch(_){}}); v.addEventListener('seeked',makePoster,{once:true});
 })();
+/* Noticias (preview imágenes) */
 (async function(){
   const list=[
     {title:"Royal Caribbean invertirá ~US$600M en Perfect Day Mexico",src:"Riviera Maya News",url:"https://riviera-maya-news.com/royal-caribbean-announces-600-million-perfect-day-mexico-mahahual-port-project/"},
     {title:"Cámaras empresariales respaldan inversión en Costa Maya",src:"Riviera Maya News",url:"https://riviera-maya-news.com/chamber-of-commerce-supports-royal-caribbean-investments-in-costa-maya-port-of-mahahual/"},
     {title:"Royal Caribbean toma posesión del puerto Costa Maya",src:"Cruise Industry News",url:"https://cruiseindustrynews.com/cruise-news/2025/07/royal-caribbean-takes-possession-of-costa-maya-cruise-port/"},
     {title:"Transformación del puerto de Costa Maya para Perfect Day",src:"Seatrade Cruise News",url:"https://www.seatrade-cruise.com/ports-destinations/royal-caribbean-buying-will-transform-costa-maya"},
-    {title:"Perfect Day Mexico apunta a 2027: atracciones y plan",src:"People",url:"https://people.com/royal-caribbean-perfect-day-mexico-tallest-water-slide-longest-lazy-river-11734640"},
+    {title:"Perfect Day Mexico apunta a 2027",src:"People",url:"https://people.com/royal-caribbean-perfect-day-mexico-tallest-water-slide-longest-lazy-river-11734640"},
     {title:"Royal Caribbean anuncia inversión en Mahahual",src:"El Economista",url:"https://www.eleconomista.com.mx/estados/royal-caribbean-anuncia-millonaria-inversion-mahahual-desarrollo-turistico-90-hectareas-20241009-729340.html"}
   ];
   const grid=document.getElementById('newsGrid'); if(!grid) return;
@@ -402,6 +428,40 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 })();
 
+/* ===================== MODO ADMIN ===================== */
+const ADMIN_PLAIN = "GrandMayahual2025!"; // cámbiala si quieres
+let IS_ADMIN = false;
+
+/* Hash util */
+async function sha256(text){
+  const enc=new TextEncoder().encode(text);
+  const buf=await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+(async ()=>{
+  const saved=sessionStorage.getItem('gm_admin');
+  const target=await sha256(ADMIN_PLAIN);
+  if(saved && saved===target){ enableAdmin(true); }
+  document.getElementById('btnAdminAccess').onclick=async ()=>{
+    const pwd=prompt('Contraseña de administrador');
+    if(!pwd) return;
+    const h=await sha256(pwd);
+    if(h===target){ sessionStorage.setItem('gm_admin',h); enableAdmin(true); toast('Modo admin activado'); }
+    else{ toast('Contraseña incorrecta'); }
+  };
+  document.getElementById('logoutAdmin').onclick=()=>{
+    sessionStorage.removeItem('gm_admin'); enableAdmin(false); toast('Modo admin desactivado');
+  };
+})();
+function enableAdmin(on){
+  IS_ADMIN=!!on;
+  document.getElementById('mapToolbar').style.display = on ? 'flex' : 'none';
+  document.getElementById('mapToolbar').setAttribute('aria-hidden', on ? 'false' : 'true');
+  document.getElementById('adminAccessWrap').style.display = on ? 'none' : 'flex';
+  document.getElementById('mapNote').textContent = on ? 'Edición habilitada (admin).' : 'Vista pública sin edición. Solo admin puede modificar el mapa.';
+  closeMenu();
+}
+
 /* ================= MAPA ================= */
 const IMG_W=1920, IMG_H=1080;
 const svg=document.getElementById('mapSvg');
@@ -412,6 +472,8 @@ const menu=document.getElementById('lotMenu');
 const idInput=document.getElementById('lotIdInput');
 const btnDisp=document.getElementById('btnDisponible');
 const btnVend=document.getElementById('btnVendido');
+const btnDup =document.getElementById('btnDuplicar');
+const btnDel =document.getElementById('btnEliminar');
 const btnCancel=document.getElementById('btnCancelar');
 
 const toggleBtn=document.getElementById('toggleEdit');
@@ -426,24 +488,45 @@ const copyLink=document.getElementById('copyLink');
 
 let EDIT=false, start=null, drawRect=null, selected=null, newRectMode=false;
 
-/* ViewBox */
+/* ViewBox + límites cross-browser */
 let vb={x:0,y:0,w:IMG_W,h:IMG_H};
-function applyVB(){ svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.h}`); }
+const MIN_W=IMG_W/16, MIN_H=IMG_H/16;
+
+function applyVB(){
+  if(!Number.isFinite(vb.x)) vb.x=0;
+  if(!Number.isFinite(vb.y)) vb.y=0;
+  if(!Number.isFinite(vb.w)) vb.w=IMG_W;
+  if(!Number.isFinite(vb.h)) vb.h=IMG_H;
+  if(applyVB._raf){ cancelAnimationFrame(applyVB._raf); }
+  applyVB._raf = requestAnimationFrame(()=> {
+    svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+  });
+}
+function clampVB(){
+  vb.w = Math.max(MIN_W, Math.min(vb.w, IMG_W));
+  vb.h = Math.max(MIN_H, Math.min(vb.h, IMG_H));
+  if (vb.w >= IMG_W - 0.001) vb.x = 0;
+  if (vb.h >= IMG_H - 0.001) vb.y = 0;
+  vb.x = Math.max(0, Math.min(vb.x, IMG_W - vb.w));
+  vb.y = Math.max(0, Math.min(vb.y, IMG_H - vb.h));
+}
 applyVB();
 
 /* Persistencia por URL (#gm=...) + window.name */
 const KEY_NAME='gm';
 function serialize(){
-  return [...lotsLayer.querySelectorAll('.lot')].map(r=>({
-    id:r.dataset.id||'',
-    x:+r.getAttribute('x'),
-    y:+r.getAttribute('y'),
-    w:+r.getAttribute('width'),
-    h:+r.getAttribute('height'),
-    sold:r.classList.contains('sold')
-  }));
+  return [...lotsLayer.querySelectorAll('.lot')].map(r=>{
+    let state='';
+    if(r.classList.contains('sold')) state='sold';
+    else if(r.classList.contains('available')) state='available';
+    return { id:r.dataset.id||'', x:+r.getAttribute('x'), y:+r.getAttribute('y'),
+             w:+r.getAttribute('width'), h:+r.getAttribute('height'), state };
+  });
 }
-function render(list){ lotsLayer.innerHTML=''; list.forEach(addRectFromData); }
+function render(list){
+  lotsLayer.innerHTML='';
+  list.forEach(d=>{ if(d.state==null){ d.state=''; } addRectFromData(d); });
+}
 function saveToHash(arr){ try{ const packed=encodeURIComponent(JSON.stringify(arr)); const base=location.href.split('#')[0]; history.replaceState(null,'',`${base}#${KEY_NAME}=${packed}`);}catch{} }
 function loadFromHash(){ try{ const m=location.hash.match(new RegExp(`${KEY_NAME}=([^&]+)`)); return m?JSON.parse(decodeURIComponent(m[1])):null;}catch{ return null } }
 function saveToName(arr){ try{ const other=(window.name||'').replace(new RegExp(`(?:^|;)${KEY_NAME}=.*?(?=(;|$))`),'').replace(/^;|;$/g,''); const packed=`${KEY_NAME}=`+encodeURIComponent(JSON.stringify(arr)); window.name = other ? `${other};${packed}` : packed; }catch{} }
@@ -453,8 +536,18 @@ function loadAll(){ let d=loadFromHash(); if(Array.isArray(d)&&d.length) return 
 window.addEventListener('beforeunload', ()=>saveAll(false));
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') saveAll(false); });
 
-/* Utils */
-function svgPoint(evt){ const pt=svg.createSVGPoint(); pt.x=evt.clientX; pt.y=evt.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); }
+/* Utils cross-browser */
+function getCTMInverseSafe(){
+  const m = svg.getScreenCTM();
+  if(!m) return {a:1,b:0,c:0,d:1,e:0,f:0, inverse(){return this}};
+  try{ return m.inverse(); }catch(_){ return {a:1,b:0,c:0,d:1,e:0,f:0, inverse(){return this}}; }
+}
+function svgPointFromClient(x,y){
+  const pt=svg.createSVGPoint(); pt.x=x; pt.y=y;
+  const inv=getCTMInverseSafe();
+  return pt.matrixTransform(inv);
+}
+function svgPoint(evt){ return svgPointFromClient(evt.clientX, evt.clientY); }
 function clampMenuPosition(x,y){
   const r=wrap.getBoundingClientRect(); menu.style.left=x+'px'; menu.style.top=y+'px'; menu.style.display='flex';
   const m=menu.getBoundingClientRect(); let nx=x, ny=y, pad=8;
@@ -464,40 +557,43 @@ function clampMenuPosition(x,y){
   menu.style.left=nx+'px'; menu.style.top=ny+'px';
 }
 function openMenuAt(clientX,clientY,rectObj){
+  if(!IS_ADMIN) return;
   const r=wrap.getBoundingClientRect(); clampMenuPosition(clientX-r.left+8, clientY-r.top+8);
   idInput.value=rectObj?.dataset.id||''; idInput.focus(); idInput.select(); selected=rectObj||selected;
 }
 function closeMenu(){ menu.style.display='none'; if(selected){selected.classList.remove('selected');} selected=null; newRectMode=false; }
 window.addEventListener('resize', ()=>{ if(menu.style.display!=='none'){ const m=menu.getBoundingClientRect(), r=wrap.getBoundingClientRect(); clampMenuPosition(m.left-r.left, m.top-r.top); }});
 
-/* Crear desde datos */
+/* Crear rects */
 function addRectFromData(d){
   const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
-  r.classList.add('lot'); if(d.sold) r.classList.add('sold');
+  r.classList.add('lot');
+  if(d.state==='sold') r.classList.add('sold');
+  if(d.state==='available') r.classList.add('available');
   r.setAttribute('x',d.x); r.setAttribute('y',d.y);
   r.setAttribute('width',d.w); r.setAttribute('height',d.h);
-  r.dataset.id=d.id; r.setAttribute('title', d.id||'Lote');
+  r.dataset.id=d.id||''; r.setAttribute('title', d.id||'Lote');
 
   r.addEventListener('click',e=>{
     e.stopPropagation();
-    if(selected) selected.classList.remove('selected');
-    r.classList.add('selected');
+    if(!IS_ADMIN) return;
+    selected?.classList.remove('selected');
+    r.classList.add('selected'); selected=r;
     openMenuAt(e.clientX, e.clientY, r);
   });
-
   r.addEventListener('contextmenu',e=>{
-    if(!EDIT) return;
-    e.preventDefault();
+    if(!IS_ADMIN || !EDIT) return; e.preventDefault();
     if(confirm('¿Eliminar este lote?')){ r.remove(); closeMenu(); saveAll(); }
   });
 
   lotsLayer.appendChild(r);
+  return r;
 }
 
-/* Dibujo / Pan */
+/* ====== Desktop: mouse ====== */
 svg.addEventListener('mousedown',e=>{
   const p=svgPoint(e);
-  if(EDIT){
+  if(IS_ADMIN && EDIT){
     start=p;
     drawRect=document.createElementNS('http://www.w3.org/2000/svg','rect');
     drawRect.classList.add('lot','editing');
@@ -510,7 +606,7 @@ svg.addEventListener('mousedown',e=>{
   closeMenu();
 });
 svg.addEventListener('mousemove',e=>{
-  if(EDIT && drawRect){
+  if(IS_ADMIN && EDIT && drawRect){
     const p=svgPoint(e);
     const x=Math.min(start.x,p.x), y=Math.min(start.y,p.y);
     const w=Math.abs(p.x-start.x), h=Math.abs(p.y-start.y);
@@ -519,11 +615,11 @@ svg.addEventListener('mousemove',e=>{
   }else if(start && start.pan){
     const p=svgPoint(e);
     vb.x -= (p.x-start.x); vb.y -= (p.y-start.y);
-    start=p; applyVB();
+    start=p; clampVB(); applyVB();
   }
 });
 svg.addEventListener('mouseup',e=>{
-  if(EDIT && drawRect){
+  if(IS_ADMIN && EDIT && drawRect){
     newRectMode = true;
     drawRect.classList.add('selected');
     selected = drawRect;
@@ -533,67 +629,202 @@ svg.addEventListener('mouseup',e=>{
   drawRect=null; start=null;
 });
 
-/* Input */
+/* ====== Móvil: touch (drag + pinch) ====== */
+let touchState = { active:false, pinch:false, d0:0, vb0:null, center:{x:0,y:0}, lastClient:{x:0,y:0} };
+
+wrap.addEventListener('gesturestart', e=>{ e.preventDefault(); }, {passive:false});
+wrap.addEventListener('gesturechange', e=>{ e.preventDefault(); }, {passive:false});
+wrap.addEventListener('gestureend', e=>{ e.preventDefault(); }, {passive:false});
+
+svg.addEventListener('touchstart', (e)=>{
+  if(e.touches.length===1){
+    const t=e.touches[0];
+    touchState.lastClient = {x:t.clientX, y:t.clientY};
+    if(IS_ADMIN && EDIT){
+      const p=svgPointFromClient(t.clientX, t.clientY);
+      start=p;
+      drawRect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+      drawRect.classList.add('lot','editing');
+      drawRect.setAttribute('x',p.x); drawRect.setAttribute('y',p.y);
+      drawRect.setAttribute('width',1); drawRect.setAttribute('height',1);
+      lotsLayer.appendChild(drawRect);
+    }else{
+      start=svgPointFromClient(t.clientX, t.clientY);
+      start.pan=true;
+    }
+  }else if(e.touches.length===2){
+    touchState.active=true; touchState.pinch=true;
+    const [t1,t2]=[e.touches[0], e.touches[1]];
+    const dx=t2.clientX - t1.clientX, dy=t2.clientY - t1.clientY;
+    touchState.d0=Math.hypot(dx,dy);
+    const cx=(t1.clientX+t2.clientX)/2, cy=(t1.clientY+t2.clientY)/2;
+    touchState.center=svgPointFromClient(cx,cy);
+    touchState.vb0={...vb};
+  }
+  closeMenu();
+},{passive:false});
+
+svg.addEventListener('touchmove',(e)=>{
+  e.preventDefault();
+  if(touchState.pinch && e.touches.length===2){
+    const [t1,t2]=[e.touches[0], e.touches[1]];
+    const dx=t2.clientX - t1.clientX, dy=t2.clientY - t1.clientY;
+    const d=Math.hypot(dx,dy); if(!touchState.d0) return;
+    const scale=touchState.d0/d;
+
+    vb.w = Math.max(MIN_W, Math.min(IMG_W, touchState.vb0.w*scale));
+    vb.h = Math.max(MIN_H, Math.min(IMG_H, touchState.vb0.h*scale));
+
+    const kx=(touchState.center.x - touchState.vb0.x)/touchState.vb0.w;
+    const ky=(touchState.center.y - touchState.vb0.y)/touchState.vb0.h;
+    vb.x = touchState.center.x - kx*vb.w; 
+    vb.y = touchState.center.y - ky*vb.h; 
+
+    clampVB(); applyVB();
+  }else if(e.touches.length===1){
+    const t=e.touches[0];
+    touchState.lastClient = {x:t.clientX, y:t.clientY};
+
+    if(IS_ADMIN && EDIT && drawRect){
+      const p=svgPointFromClient(t.clientX, t.clientY);
+      const x=Math.min(start.x,p.x), y=Math.min(start.y,p.y);
+      const w=Math.abs(p.x-start.x), h=Math.abs(p.y-start.y);
+      drawRect.setAttribute('x',x); drawRect.setAttribute('y',y);
+      drawRect.setAttribute('width',w); drawRect.setAttribute('height',h);
+    }else if(start && start.pan){
+      const p=svgPointFromClient(t.clientX, t.clientY);
+      vb.x -= (p.x-start.x); vb.y -= (p.y-start.y);
+      start=p; clampVB(); applyVB();
+    }
+  }
+},{passive:false});
+
+svg.addEventListener('touchend', ()=>{
+  if(IS_ADMIN && EDIT && drawRect){
+    newRectMode = true;
+    drawRect.classList.add('selected');
+    selected = drawRect;
+    openMenuAt(touchState.lastClient.x, touchState.lastClient.y, drawRect);
+    saveAll(false);
+  }
+  touchState={ active:false,pinch:false,d0:0,vb0:null,center:{x:0,y:0}, lastClient:{x:0,y:0} };
+  start=null; drawRect=null;
+},{passive:false});
+
+/* Estados + input */
+function setState(el, state){
+  el.classList.remove('editing','sold','available');
+  if(state==='sold') el.classList.add('sold');
+  if(state==='available') el.classList.add('available');
+}
 function applyFromInput(){
   if(!selected) return;
-  const raw=idInput.value.trim(); if(!raw){ selected.dataset.id=''; selected.setAttribute('title','Lote'); return; }
+  const raw=(idInput.value||'').trim();
+  if(!raw){ selected.dataset.id=''; selected.setAttribute('title','Lote'); return; }
   const lower=raw.toLowerCase();
-  if(lower==='vendido'){ selected.classList.add('sold'); }
-  else if(lower==='disponible'){ selected.classList.remove('sold'); }
-  else{ selected.dataset.id=raw; selected.setAttribute('title',raw); }
+  if(lower==='vendido'){ setState(selected,'sold'); return; }
+  if(lower==='disponible'){ setState(selected,'available'); return; }
+  selected.dataset.id=raw; selected.setAttribute('title',raw);
 }
 idInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ applyFromInput(); saveAll(); }});
 idInput.addEventListener('input', ()=>{ if(selected){ selected.dataset.id=idInput.value.trim(); selected.setAttribute('title', selected.dataset.id||'Lote'); saveAll(false); }});
 
+/* Duplicar/Eliminar helpers */
+function getRectData(r){
+  return {
+    id: r.dataset.id || '',
+    x: +r.getAttribute('x'),
+    y: +r.getAttribute('y'),
+    w: +r.getAttribute('width'),
+    h: +r.getAttribute('height'),
+    state: r.classList.contains('sold') ? 'sold' :
+            (r.classList.contains('available') ? 'available' : '')
+  };
+}
+function duplicateRect(r){
+  const d=getRectData(r);
+  const OFFSET = Math.max(6, Math.round(Math.min(d.w,d.h)*0.06));
+  const copy={...d, x: d.x+OFFSET, y: d.y+OFFSET};
+  const newEl = addRectFromData(copy);
+  selected?.classList.remove('selected');
+  newEl.classList.add('selected');
+  selected=newEl;
+  const cx = (copy.x + copy.w/2) * (wrap.clientWidth / vb.w);
+  const cy = (copy.y + copy.h/2) * (wrap.clientHeight / vb.h);
+  const rect = wrap.getBoundingClientRect();
+  openMenuAt(rect.left + cx, rect.top + cy, newEl);
+  saveAll();
+}
+function deleteRect(r){
+  r.remove();
+  closeMenu();
+  saveAll();
+}
+
 /* Menú botones */
 menu.addEventListener('click',e=>e.stopPropagation());
-btnCancel.onclick=()=>{ if(newRectMode && selected){ selected.remove(); } closeMenu(); saveAll(); };
-btnDisp.onclick=()=>{ if(!selected) return; applyFromInput(); selected.classList.remove('editing','sold'); saveAll(); closeMenu(); };
-btnVend.onclick =()=>{ if(!selected) return; applyFromInput(); selected.classList.remove('editing'); selected.classList.add('sold'); saveAll(); closeMenu(); };
+btnCancel.onclick =()=>{ if(newRectMode && selected){ selected.remove(); } closeMenu(); saveAll(); };
+btnDisp.onclick   =()=>{ if(!selected) return; applyFromInput(); setState(selected,'available'); saveAll(); closeMenu(); };
+btnVend.onclick   =()=>{ if(!selected) return; applyFromInput(); setState(selected,'sold');      saveAll(); closeMenu(); };
+btnDup.onclick    =()=>{ if(!IS_ADMIN || !selected) return; duplicateRect(selected); };
+btnDel.onclick    =()=>{ if(!IS_ADMIN || !selected) return; if(confirm('¿Eliminar este lote?')) deleteRect(selected); };
 
-/* Wheel zoom */
+/* ===== Wheel/Zoom normalizado (Firefox + Safari) ===== */
+function getWheelDeltaY(e){
+  const LINES_TO_PIXELS = 16;
+  return e.deltaMode === 1 ? e.deltaY * LINES_TO_PIXELS : e.deltaY;
+}
 svg.addEventListener('wheel',e=>{
   e.preventDefault();
   const p=svgPoint(e);
-  const dir = e.deltaY>0 ? 1.1 : 1/1.1;
-  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
-  const newW = clamp(vb.w*dir, IMG_W/8, IMG_W*2);
-  const newH = clamp(vb.h*dir, IMG_H/8, IMG_H*2);
-  const kx=(p.x - vb.x)/vb.w, ky=(p.y - vb.y)/vb.h;
-  vb.x = p.x - kx*newW; vb.y = p.y - ky*newH; vb.w = newW; vb.h = newH;
-  applyVB(); saveAll(false);
-},{passive:false});
-zoomIn.onclick = ()=>{ svg.dispatchEvent(new WheelEvent('wheel',{deltaY:-100})); };
-zoomOut.onclick= ()=>{ svg.dispatchEvent(new WheelEvent('wheel',{deltaY: 100})); };
-zoomReset.onclick=()=>{ vb={x:0,y:0,w:IMG_W,h:IMG_H}; applyVB(); saveAll(); };
+  const dy = getWheelDeltaY(e);
+  const dir = dy>0 ? 1.1 : 1/1.1;
 
-/* Controles */
-toggleBtn.onclick=()=>{ EDIT=!EDIT; toggleBtn.textContent=EDIT?'Salir de edición':'Editar mapa'; closeMenu(); };
+  let newW = Math.max(MIN_W, Math.min(IMG_W, vb.w*dir));
+  let newH = Math.max(MIN_H, Math.min(IMG_H, vb.h*dir));
+
+  const kx=(p.x - vb.x)/vb.w, ky=(p.y - vb.y)/vb.h;
+  vb.x = p.x - kx*newW; 
+  vb.y = p.y - ky*newH; 
+  vb.w = newW; 
+  vb.h = newH;
+
+  clampVB(); applyVB();
+},{passive:false});
+zoomIn.onclick = ()=>{ svg.dispatchEvent(new WheelEvent('wheel',{deltaY:-100, deltaMode:0})); };
+zoomOut.onclick= ()=>{ svg.dispatchEvent(new WheelEvent('wheel',{deltaY: 100, deltaMode:0})); };
+zoomReset.onclick=()=>{ vb={x:0,y:0,w:IMG_W,h:IMG_H}; clampVB(); applyVB(); saveAll(false); };
+
+/* Controles (solo admin) */
+toggleBtn.onclick=()=>{ if(!IS_ADMIN) return; EDIT=!EDIT; toggleBtn.textContent=EDIT?'Salir de edición':'Editar mapa'; closeMenu(); };
 clearAll.onclick=()=>{ 
+  if(!IS_ADMIN) return;
   if (!confirm('¿Borrar todos los lotes del mapa?')) return;
   try { const base=location.href.split('#')[0]; history.replaceState(null,'',base);
     window.name=(window.name||'').replace(new RegExp(`(?:^|;)${KEY_NAME}=.*?(?=(;|$))`),'').replace(/^;|;$/g,''); } catch(_){}
   render([]); saveAll(); closeMenu();
 };
-exportBtn.onclick=()=>{ const data=serialize(); const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='lotes_grand_mayahual.json'; a.click(); URL.revokeObjectURL(a.href); };
-importInp.onchange=async(e)=>{ const f=e.target.files[0]; if(!f) return; try{ const arr=JSON.parse(await f.text()); render(arr); saveAll(); }catch{ alert('JSON inválido'); } };
-
-saveLink.onclick=()=>{ saveAll(); };
+exportBtn.onclick=()=>{ if(!IS_ADMIN) return; const data=serialize(); const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='lotes_grand_mayahual.json'; a.click(); URL.revokeObjectURL(a.href); };
+importInp.onchange=async(e)=>{ if(!IS_ADMIN) return; const f=e.target.files[0]; if(!f) return; try{ const arr=JSON.parse(await f.text()); render(arr); saveAll(); }catch{ alert('JSON inválido'); } };
+saveLink.onclick=()=>{ if(!IS_ADMIN) return; saveAll(); };
 copyLink.onclick=async ()=>{ saveAll(false); try{ await navigator.clipboard.writeText(location.href); toast('Enlace copiado'); }catch{ toast('Copia manual: selecciona la URL'); } };
 
-/* Carga inicial */
+/* Atajos (opcionales) */
+document.addEventListener('keydown',(e)=>{
+  if(!IS_ADMIN || !selected) return;
+  if(e.key.toLowerCase()==='d'){ e.preventDefault(); duplicateRect(selected); }
+  if(e.key==='Delete' || e.key==='Backspace'){ e.preventDefault(); if(confirm('¿Eliminar este lote?')) deleteRect(selected); }
+});
+
+/* Carga inicial: mapa limpio si no hay estado previo */
 (function init(){
   const initial = loadAll();
   if (initial.length){ render(initial); }
-  else{
-    render([
-      {id:'MZ 08 LT 41',x:1018,y:570,w:48,h:180,sold:false},
-      {id:'MZ 08 LT 42',x:1068,y:570,w:48,h:180,sold:true},
-      {id:'MZ 08 LT 43',x:1118,y:570,w:48,h:180,sold:false},
-    ]);
-    saveAll(false);
-  }
+  else{ render([]); saveAll(false); } // limpio
 })();
 </script>
+
 </body>
 </html>
+
+
